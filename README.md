@@ -111,7 +111,7 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
 ## 🔄 更新歷史
 
 最後更新：2024年7月1日  
-版本：v1.1.0  
+版本：v1.2.0  
 新增功能：多語言支援分離架構
 
 ---
