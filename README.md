@@ -1,8 +1,8 @@
-# 🎮 Pokemon Phonetic Practice Worksheet / 寶可夢注音符號練習表
-
-A Python project for generating Pokemon Bopomofo (Zhuyin) phonetic symbol practice sheets, helping children learn phonetic symbols by looking at Pokemon images and Chinese names.
+# 🎮 寶可夢注音符號練習表
 
 一個用於生成寶可夢注音符號練習表的 Python 專案，讓小朋友可以看著寶可夢圖片和中文名稱來練習填寫注音符號。
+
+**其他語言 / Other Languages:** [English](docs/i18n/README_en.md) | [日本語](docs/i18n/README_ja.md)
 
 ## 🌟 專案特色
 
@@ -75,34 +75,13 @@ pokemon-phonetic-practice/
 ├── get_pokemon_names_tw.py             # 名稱收集器
 ├── requirements.txt                    # Python 依賴
 ├── fonts/                              # 字型檔案
-│   ├── BpmfGenSenRounded-R.ttf
-│   └── BpmfGenYoMin-R.ttf
 ├── pokemon_data/                       # 寶可夢資料
-│   ├── pokemon_names_tw.csv
-│   └── pokemon_names_tw.txt
 ├── pokemon_images/                     # 圖片資料 (1025張)
-│   ├── 001.png
-│   ├── 002.png
-│   └── ...
 ├── docs/                               # 文檔
-│   ├── SETUP.md                        # 環境設置說明
-│   ├── CHANGELOG.md                    # 版本歷史
-│   ├── 字級調整對照表.md
-│   └── 虛線框調整指南.md
 └── pokemon_gen*_phonetic.html          # 生成的練習表
 ```
 
 ## 🛠️ 使用說明
-
-### 統合管理工具
-執行 `pokemon_manager.py` 提供完整的專案管理功能：
-
-1. **下載寶可夢圖片** - 從官方網站下載全部 1025 張圖片
-2. **抓取中文名稱** - 收集台灣官方中文名稱資料
-3. **生成練習表** - 互動式世代選擇生成 HTML 練習表
-4. **一鍵完整設置** - 自動執行所有設置步驟
-5. **檢查資料狀態** - 顯示資料完整性和專案狀態
-6. **清理資料** - 安全清理資料檔案
 
 ### 世代選擇器
 執行 `generate_generation_selector.py` 快速生成練習表：
@@ -112,10 +91,6 @@ pokemon-phonetic-practice/
 - 支援範圍：`1-3` (第一到第三世代)
 - 支援全部：`10` (全部九個世代)
 
-### 客製化調整
-- **字級調整** → [docs/字級調整對照表.md](docs/字級調整對照表.md)
-- **邊框設定** → [docs/虛線框調整指南.md](docs/虛線框調整指南.md)
-
 ## 📖 詳細文檔
 
 - [環境設置說明](docs/SETUP.md) - 詳細的安裝與設置指南
@@ -123,33 +98,21 @@ pokemon-phonetic-practice/
 - [字級調整對照表](docs/字級調整對照表.md) - 字體大小調整指南
 - [虛線框調整指南](docs/虛線框調整指南.md) - 邊框樣式調整說明
 
-## 🎯 輸出範例
-
-生成的練習表具有以下特色：
-- **A4 橫式格式**：適合列印使用
-- **一排一隻**：清晰大圖，容易辨識
-- **注音練習欄**：空白輸入框供填寫
-- **世代分隔**：清楚標示不同世代
-- **頁碼標示**：方便管理和使用
-
-檔案範例：
-- `pokemon_gen1_phonetic.html` (81KB, 151隻寶可夢)
-- `pokemon_gen2_phonetic.html` (56KB, 100隻寶可夢)
-- `pokemon_all_generations_phonetic.html` (515KB, 1025隻寶可夢)
-
 ## 🤝 貢獻
 
 歡迎提交 Issue 和 Pull Request 來改善這個專案！
 
 ## 📄 授權
 
-MIT License
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
+
+---
 
 ## 🔄 更新歷史
 
 最後更新：2024年7月1日  
-版本：v1.1  
-新增功能：邊框隱藏/顯示控制
+版本：v1.1.0  
+新增功能：多語言支援分離架構
 
 ---
 
