@@ -93,6 +93,7 @@ Run `generate_generation_selector.py` for quick worksheet generation:
 
 ## 📖 Detailed Documentation
 
+- [📖 Project Story](../../STORY.md) - A Father and Child's Phonetic Adventure (繁體中文) ⭐
 - [Environment Setup Guide](../SETUP.md) - Detailed installation and setup guide
 - [Version History](../CHANGELOG.md) - Project update records
 - [Font Size Adjustment Guide](../字級調整對照表.md) - Font size adjustment guide

@@ -93,6 +93,7 @@ pokemon-phonetic-practice/
 
 ## 📖 詳細文檔
 
+- [📖 專案背後的故事](STORY.md) - 一位爸爸與寶貝的拼音冒險 ⭐
 - [環境設置說明](docs/SETUP.md) - 詳細的安裝與設置指南
 - [版本歷史](docs/CHANGELOG.md) - 專案更新記錄
 - [字級調整對照表](docs/字級調整對照表.md) - 字體大小調整指南
@@ -111,8 +112,8 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
 ## 🔄 更新歷史
 
 最後更新：2024年7月1日  
-版本：v1.2.0  
-新增功能：多語言支援分離架構
+版本：v1.2.1  
+新增功能：專案背後的故事文檔
 
 ---
 
