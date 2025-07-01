@@ -26,13 +26,13 @@
 ### 1. 複製專案
 ```bash
 # 使用 HTTPS
-git clone https://github.com/[username]/寶可夢注音符號練習表.git
+git clone https://github.com/tk009999/pokemon-phonetic-practice.git
 
 # 或使用 SSH (如果已設置 SSH Key)
-git clone git@github.com:[username]/寶可夢注音符號練習表.git
+git clone git@github.com:tk009999/pokemon-phonetic-practice.git
 
 # 進入專案目錄
-cd 寶可夢注音符號練習表
+cd pokemon-phonetic-practice
 ```
 
 ### 2. Python 環境檢查
@@ -118,7 +118,7 @@ python generate_generation_selector.py
 設置完成後，專案目錄應該包含：
 
 ```
-寶可夢注音符號練習表/
+pokemon-phonetic-practice/
 ├── venv/                    ✅ 虛擬環境
 ├── pokemon_images/          ✅ 1025 張圖片
 │   ├── 001.png

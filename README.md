@@ -1,4 +1,6 @@
-# 🎮 寶可夢注音符號練習表
+# 🎮 Pokemon Phonetic Practice Worksheet / 寶可夢注音符號練習表
+
+A Python project for generating Pokemon Bopomofo (Zhuyin) phonetic symbol practice sheets, helping children learn phonetic symbols by looking at Pokemon images and Chinese names.
 
 一個用於生成寶可夢注音符號練習表的 Python 專案，讓小朋友可以看著寶可夢圖片和中文名稱來練習填寫注音符號。
 
@@ -40,8 +42,8 @@
 ### 安裝步驟
 ```bash
 # 1. 複製專案
-git clone [repository-url]
-cd 寶可夢注音符號練習表
+git clone https://github.com/tk009999/pokemon-phonetic-practice.git
+cd pokemon-phonetic-practice
 
 # 2. 建立虛擬環境
 python3 -m venv venv
@@ -64,7 +66,7 @@ python generate_generation_selector.py
 ## 📁 專案結構
 
 ```
-寶可夢注音符號練習表/
+pokemon-phonetic-practice/
 ├── README.md                           # 專案說明
 ├── DOC_GUIDELINES.md                   # 文檔規範
 ├── pokemon_manager.py                  # 統合管理工具
