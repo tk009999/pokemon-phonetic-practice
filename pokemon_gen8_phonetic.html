@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寶可夢注音符號練習表 - 第8世代</title>
+    <style>
+        @font-face {
+            font-family: 'BpmfGenSen';
+            src: url('fonts/BpmfGenYoMin-R.ttf') format('truetype');
+            font-display: swap;
+        }
+        
+        /* A4橫式印刷設定 */
+        @page {
+            size: A4 landscape;
+            margin: 12mm 10mm 18mm 10mm;
+        }
+        
+        body {
+            font-family: 'BpmfGenSen', "PingFang TC", "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            padding: 0 0 25px 0;
+            font-size: 14px;
+            line-height: 1.3;
+            background: white;
+            position: relative;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-bottom: 3px solid #333;
+            page-break-after: avoid;
+        }
+        
+        .page-header h1 {
+            margin: 0;
+            font-size: 22px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .page-header p {
+            margin: 4px 0 0 0;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* 表格樣式 - 一排一隻 */
+        .pokemon-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .pokemon-table th,
+        .pokemon-table td {
+            border: 2px solid #333;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .pokemon-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            font-size: 16px;
+            height: 35px;
+        }
+        
+        .pokemon-row {
+            height: 80px;
+            page-break-inside: avoid;
+        }
+        
+        .number-col {
+            width: 10%;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .image-col {
+            width: 25%;
+            padding: 5px;
+        }
+        
+        .name-col {
+            width: 30%;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        
+        .phonetic-col {
+            width: 35%;
+            background-color: #fafafa;
+        }
+        
+        .pokemon-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .phonetic-input {
+            width: 90%;
+            height: 50px;
+            border: none;
+            background: white;
+            text-align: center;
+            font-family: 'BpmfGenSen', monospace;
+            font-size: 28px;
+            border-radius: 5px;
+            padding: 4px;
+            color: #333;
+            outline: none;
+        }
+        
+        /* 世代分隔 */
+        .generation-divider {
+            background-color: #e9ecef;
+            font-weight: bold;
+            font-size: 16px;
+            height: 40px;
+            color: #495057;
+        }
+        
+        .generation-divider td {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            font-weight: bold;
+            border: 3px solid #333;
+        }
+        
+        /* 頁面底部資訊區 */
+        .page-footer {
+            position: relative;
+            margin-top: 15px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+        }
+        
+        /* 頁面計數器 - 修正位置 */
+        .page-info {
+            position: absolute;
+            bottom: 5px;
+            right: 0;
+            font-size: 10px;
+            color: #666;
+            background: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        /* 使用說明 - 調整位置避免重疊 */
+        .usage-info {
+            text-align: center;
+            margin: 8px 0;
+            padding-right: 80px;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .usage-info p {
+            margin: 3px 0;
+            line-height: 1.4;
+        }
+        
+        /* 印刷優化 */
+        @media print {
+            body {
+                font-size: 12px;
+                padding-bottom: 20px;
+            }
+            
+            .pokemon-table {
+                font-size: 12px;
+            }
+            
+            .pokemon-row {
+                height: 75px;
+            }
+            
+            .pokemon-img {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .phonetic-input {
+                height: 25px;
+                font-size: 12px;
+            }
+            
+            .page-header h1 {
+                font-size: 20px;
+            }
+            
+            .usage-info {
+                font-size: 10px;
+                padding-right: 70px;
+            }
+            
+            .page-info {
+                font-size: 9px;
+            }
+            
+            /* 確保不會分頁切斷 */
+            .pokemon-row {
+                page-break-inside: avoid;
+            }
+            
+            .generation-divider {
+                page-break-after: avoid;
+            }
+            
+            .page-footer {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* 分頁控制 */
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 共96隻 • A4橫式印刷版 • 一排一隻放大版</p>
+    </div>
+    
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="generation-divider">
+                <td colspan="4">🏰 第八世代 - 伽勒爾地區 (810-905) • 96隻</td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#810</td>
+                <td class="image-col">
+                    <img src="pokemon_images/810.png" alt="敲音猴" class="pokemon-img">
+                </td>
+                <td class="name-col">敲音猴</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#811</td>
+                <td class="image-col">
+                    <img src="pokemon_images/811.png" alt="啪咚猴" class="pokemon-img">
+                </td>
+                <td class="name-col">啪咚猴</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#812</td>
+                <td class="image-col">
+                    <img src="pokemon_images/812.png" alt="轟擂金剛猩" class="pokemon-img">
+                </td>
+                <td class="name-col">轟擂金剛猩</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#813</td>
+                <td class="image-col">
+                    <img src="pokemon_images/813.png" alt="炎兔兒" class="pokemon-img">
+                </td>
+                <td class="name-col">炎兔兒</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#814</td>
+                <td class="image-col">
+                    <img src="pokemon_images/814.png" alt="騰蹴小將" class="pokemon-img">
+                </td>
+                <td class="name-col">騰蹴小將</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#815</td>
+                <td class="image-col">
+                    <img src="pokemon_images/815.png" alt="閃焰王牌" class="pokemon-img">
+                </td>
+                <td class="name-col">閃焰王牌</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#816</td>
+                <td class="image-col">
+                    <img src="pokemon_images/816.png" alt="淚眼蜥" class="pokemon-img">
+                </td>
+                <td class="name-col">淚眼蜥</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#817</td>
+                <td class="image-col">
+                    <img src="pokemon_images/817.png" alt="變澀蜥" class="pokemon-img">
+                </td>
+                <td class="name-col">變澀蜥</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#818</td>
+                <td class="image-col">
+                    <img src="pokemon_images/818.png" alt="千面避役" class="pokemon-img">
+                </td>
+                <td class="name-col">千面避役</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#819</td>
+                <td class="image-col">
+                    <img src="pokemon_images/819.png" alt="貪心栗鼠" class="pokemon-img">
+                </td>
+                <td class="name-col">貪心栗鼠</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#820</td>
+                <td class="image-col">
+                    <img src="pokemon_images/820.png" alt="藏飽栗鼠" class="pokemon-img">
+                </td>
+                <td class="name-col">藏飽栗鼠</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#821</td>
+                <td class="image-col">
+                    <img src="pokemon_images/821.png" alt="稚山雀" class="pokemon-img">
+                </td>
+                <td class="name-col">稚山雀</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#822</td>
+                <td class="image-col">
+                    <img src="pokemon_images/822.png" alt="藍鴉" class="pokemon-img">
+                </td>
+                <td class="name-col">藍鴉</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#823</td>
+                <td class="image-col">
+                    <img src="pokemon_images/823.png" alt="鋼鎧鴉" class="pokemon-img">
+                </td>
+                <td class="name-col">鋼鎧鴉</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#824</td>
+                <td class="image-col">
+                    <img src="pokemon_images/824.png" alt="索偵蟲" class="pokemon-img">
+                </td>
+                <td class="name-col">索偵蟲</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 列印後可直接在注音符號欄位填寫練習 • 🎯 使用寶可夢注音專用字型</p>
+        </div>
+        <div class="page-info">第 1 頁</div>
+    </div>
+    <div class="page-break"></div>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 第 2 頁 • 一排一隻放大版</p>
+    </div>
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pokemon-row">
+                <td class="number-col">#825</td>
+                <td class="image-col">
+                    <img src="pokemon_images/825.png" alt="天罩蟲" class="pokemon-img">
+                </td>
+                <td class="name-col">天罩蟲</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#826</td>
+                <td class="image-col">
+                    <img src="pokemon_images/826.png" alt="以歐路普" class="pokemon-img">
+                </td>
+                <td class="name-col">以歐路普</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#827</td>
+                <td class="image-col">
+                    <img src="pokemon_images/827.png" alt="偷兒狐" class="pokemon-img">
+                </td>
+                <td class="name-col">偷兒狐</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#828</td>
+                <td class="image-col">
+                    <img src="pokemon_images/828.png" alt="狐大盜" class="pokemon-img">
+                </td>
+                <td class="name-col">狐大盜</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#829</td>
+                <td class="image-col">
+                    <img src="pokemon_images/829.png" alt="幼棉棉" class="pokemon-img">
+                </td>
+                <td class="name-col">幼棉棉</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#830</td>
+                <td class="image-col">
+                    <img src="pokemon_images/830.png" alt="白蓬蓬" class="pokemon-img">
+                </td>
+                <td class="name-col">白蓬蓬</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#831</td>
+                <td class="image-col">
+                    <img src="pokemon_images/831.png" alt="毛辮羊" class="pokemon-img">
+                </td>
+                <td class="name-col">毛辮羊</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#832</td>
+                <td class="image-col">
+                    <img src="pokemon_images/832.png" alt="毛毛角羊" class="pokemon-img">
+                </td>
+                <td class="name-col">毛毛角羊</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#833</td>
+                <td class="image-col">
+                    <img src="pokemon_images/833.png" alt="咬咬龜" class="pokemon-img">
+                </td>
+                <td class="name-col">咬咬龜</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#834</td>
+                <td class="image-col">
+                    <img src="pokemon_images/834.png" alt="暴噬龜" class="pokemon-img">
+                </td>
+                <td class="name-col">暴噬龜</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#835</td>
+                <td class="image-col">
+                    <img src="pokemon_images/835.png" alt="來電汪" class="pokemon-img">
+                </td>
+                <td class="name-col">來電汪</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#836</td>
+                <td class="image-col">
+                    <img src="pokemon_images/836.png" alt="逐電犬" class="pokemon-img">
+                </td>
+                <td class="name-col">逐電犬</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#837</td>
+                <td class="image-col">
+                    <img src="pokemon_images/837.png" alt="小炭仔" class="pokemon-img">
+                </td>
+                <td class="name-col">小炭仔</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#838</td>
+                <td class="image-col">
+                    <img src="pokemon_images/838.png" alt="大炭車" class="pokemon-img">
+                </td>
+                <td class="name-col">大炭車</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#839</td>
+                <td class="image-col">
+                    <img src="pokemon_images/839.png" alt="巨炭山" class="pokemon-img">
+                </td>
+                <td class="name-col">巨炭山</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 列印後可直接在注音符號欄位填寫練習 • 🎯 使用寶可夢注音專用字型</p>
+        </div>
+        <div class="page-info">第 2 頁</div>
+    </div>
+    <div class="page-break"></div>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 第 3 頁 • 一排一隻放大版</p>
+    </div>
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pokemon-row">
+                <td class="number-col">#840</td>
+                <td class="image-col">
+                    <img src="pokemon_images/840.png" alt="啃果蟲" class="pokemon-img">
+                </td>
+                <td class="name-col">啃果蟲</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#841</td>
+                <td class="image-col">
+                    <img src="pokemon_images/841.png" alt="蘋裹龍" class="pokemon-img">
+                </td>
+                <td class="name-col">蘋裹龍</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#842</td>
+                <td class="image-col">
+                    <img src="pokemon_images/842.png" alt="豐蜜龍" class="pokemon-img">
+                </td>
+                <td class="name-col">豐蜜龍</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#843</td>
+                <td class="image-col">
+                    <img src="pokemon_images/843.png" alt="沙包蛇" class="pokemon-img">
+                </td>
+                <td class="name-col">沙包蛇</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#844</td>
+                <td class="image-col">
+                    <img src="pokemon_images/844.png" alt="沙螺蟒" class="pokemon-img">
+                </td>
+                <td class="name-col">沙螺蟒</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#845</td>
+                <td class="image-col">
+                    <img src="pokemon_images/845.png" alt="古月鳥" class="pokemon-img">
+                </td>
+                <td class="name-col">古月鳥</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#846</td>
+                <td class="image-col">
+                    <img src="pokemon_images/846.png" alt="刺梭魚" class="pokemon-img">
+                </td>
+                <td class="name-col">刺梭魚</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#847</td>
+                <td class="image-col">
+                    <img src="pokemon_images/847.png" alt="戽斗尖梭" class="pokemon-img">
+                </td>
+                <td class="name-col">戽斗尖梭</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#848</td>
+                <td class="image-col">
+                    <img src="pokemon_images/848.png" alt="毒電嬰" class="pokemon-img">
+                </td>
+                <td class="name-col">毒電嬰</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#849</td>
+                <td class="image-col">
+                    <img src="pokemon_images/849.png" alt="顫弦蠑螈" class="pokemon-img">
+                </td>
+                <td class="name-col">顫弦蠑螈</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#850</td>
+                <td class="image-col">
+                    <img src="pokemon_images/850.png" alt="燒火蚣" class="pokemon-img">
+                </td>
+                <td class="name-col">燒火蚣</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#851</td>
+                <td class="image-col">
+                    <img src="pokemon_images/851.png" alt="焚焰蚣" class="pokemon-img">
+                </td>
+                <td class="name-col">焚焰蚣</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#852</td>
+                <td class="image-col">
+                    <img src="pokemon_images/852.png" alt="拳拳蛸" class="pokemon-img">
+                </td>
+                <td class="name-col">拳拳蛸</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#853</td>
+                <td class="image-col">
+                    <img src="pokemon_images/853.png" alt="八爪武師" class="pokemon-img">
+                </td>
+                <td class="name-col">八爪武師</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#854</td>
+                <td class="image-col">
+                    <img src="pokemon_images/854.png" alt="來悲茶" class="pokemon-img">
+                </td>
+                <td class="name-col">來悲茶</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 列印後可直接在注音符號欄位填寫練習 • 🎯 使用寶可夢注音專用字型</p>
+        </div>
+        <div class="page-info">第 3 頁</div>
+    </div>
+    <div class="page-break"></div>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 第 4 頁 • 一排一隻放大版</p>
+    </div>
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pokemon-row">
+                <td class="number-col">#855</td>
+                <td class="image-col">
+                    <img src="pokemon_images/855.png" alt="怖思壺" class="pokemon-img">
+                </td>
+                <td class="name-col">怖思壺</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#856</td>
+                <td class="image-col">
+                    <img src="pokemon_images/856.png" alt="迷布莉姆" class="pokemon-img">
+                </td>
+                <td class="name-col">迷布莉姆</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#857</td>
+                <td class="image-col">
+                    <img src="pokemon_images/857.png" alt="提布莉姆" class="pokemon-img">
+                </td>
+                <td class="name-col">提布莉姆</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#858</td>
+                <td class="image-col">
+                    <img src="pokemon_images/858.png" alt="布莉姆溫" class="pokemon-img">
+                </td>
+                <td class="name-col">布莉姆溫</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#859</td>
+                <td class="image-col">
+                    <img src="pokemon_images/859.png" alt="搗蛋小妖" class="pokemon-img">
+                </td>
+                <td class="name-col">搗蛋小妖</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#860</td>
+                <td class="image-col">
+                    <img src="pokemon_images/860.png" alt="詐唬魔" class="pokemon-img">
+                </td>
+                <td class="name-col">詐唬魔</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#861</td>
+                <td class="image-col">
+                    <img src="pokemon_images/861.png" alt="長毛巨魔" class="pokemon-img">
+                </td>
+                <td class="name-col">長毛巨魔</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#862</td>
+                <td class="image-col">
+                    <img src="pokemon_images/862.png" alt="堵攔熊" class="pokemon-img">
+                </td>
+                <td class="name-col">堵攔熊</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#863</td>
+                <td class="image-col">
+                    <img src="pokemon_images/863.png" alt="喵頭目" class="pokemon-img">
+                </td>
+                <td class="name-col">喵頭目</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#864</td>
+                <td class="image-col">
+                    <img src="pokemon_images/864.png" alt="魔靈珊瑚" class="pokemon-img">
+                </td>
+                <td class="name-col">魔靈珊瑚</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#865</td>
+                <td class="image-col">
+                    <img src="pokemon_images/865.png" alt="蔥遊兵" class="pokemon-img">
+                </td>
+                <td class="name-col">蔥遊兵</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#866</td>
+                <td class="image-col">
+                    <img src="pokemon_images/866.png" alt="踏冰人偶" class="pokemon-img">
+                </td>
+                <td class="name-col">踏冰人偶</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#867</td>
+                <td class="image-col">
+                    <img src="pokemon_images/867.png" alt="死神板" class="pokemon-img">
+                </td>
+                <td class="name-col">死神板</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#868</td>
+                <td class="image-col">
+                    <img src="pokemon_images/868.png" alt="小仙奶" class="pokemon-img">
+                </td>
+                <td class="name-col">小仙奶</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#869</td>
+                <td class="image-col">
+                    <img src="pokemon_images/869.png" alt="霜奶仙" class="pokemon-img">
+                </td>
+                <td class="name-col">霜奶仙</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 列印後可直接在注音符號欄位填寫練習 • 🎯 使用寶可夢注音專用字型</p>
+        </div>
+        <div class="page-info">第 4 頁</div>
+    </div>
+    <div class="page-break"></div>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 第 5 頁 • 一排一隻放大版</p>
+    </div>
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pokemon-row">
+                <td class="number-col">#870</td>
+                <td class="image-col">
+                    <img src="pokemon_images/870.png" alt="列陣兵" class="pokemon-img">
+                </td>
+                <td class="name-col">列陣兵</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#871</td>
+                <td class="image-col">
+                    <img src="pokemon_images/871.png" alt="啪嚓海膽" class="pokemon-img">
+                </td>
+                <td class="name-col">啪嚓海膽</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#872</td>
+                <td class="image-col">
+                    <img src="pokemon_images/872.png" alt="雪吞蟲" class="pokemon-img">
+                </td>
+                <td class="name-col">雪吞蟲</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#873</td>
+                <td class="image-col">
+                    <img src="pokemon_images/873.png" alt="雪絨蛾" class="pokemon-img">
+                </td>
+                <td class="name-col">雪絨蛾</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#874</td>
+                <td class="image-col">
+                    <img src="pokemon_images/874.png" alt="巨石丁" class="pokemon-img">
+                </td>
+                <td class="name-col">巨石丁</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#875</td>
+                <td class="image-col">
+                    <img src="pokemon_images/875.png" alt="冰砌鵝" class="pokemon-img">
+                </td>
+                <td class="name-col">冰砌鵝</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#876</td>
+                <td class="image-col">
+                    <img src="pokemon_images/876.png" alt="愛管侍" class="pokemon-img">
+                </td>
+                <td class="name-col">愛管侍</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#877</td>
+                <td class="image-col">
+                    <img src="pokemon_images/877.png" alt="莫魯貝可" class="pokemon-img">
+                </td>
+                <td class="name-col">莫魯貝可</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#878</td>
+                <td class="image-col">
+                    <img src="pokemon_images/878.png" alt="銅象" class="pokemon-img">
+                </td>
+                <td class="name-col">銅象</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#879</td>
+                <td class="image-col">
+                    <img src="pokemon_images/879.png" alt="大王銅象" class="pokemon-img">
+                </td>
+                <td class="name-col">大王銅象</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#880</td>
+                <td class="image-col">
+                    <img src="pokemon_images/880.png" alt="雷鳥龍" class="pokemon-img">
+                </td>
+                <td class="name-col">雷鳥龍</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#881</td>
+                <td class="image-col">
+                    <img src="pokemon_images/881.png" alt="雷鳥海獸" class="pokemon-img">
+                </td>
+                <td class="name-col">雷鳥海獸</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#882</td>
+                <td class="image-col">
+                    <img src="pokemon_images/882.png" alt="鰓魚龍" class="pokemon-img">
+                </td>
+                <td class="name-col">鰓魚龍</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#883</td>
+                <td class="image-col">
+                    <img src="pokemon_images/883.png" alt="鰓魚海獸" class="pokemon-img">
+                </td>
+                <td class="name-col">鰓魚海獸</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#884</td>
+                <td class="image-col">
+                    <img src="pokemon_images/884.png" alt="鋁鋼龍" class="pokemon-img">
+                </td>
+                <td class="name-col">鋁鋼龍</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 列印後可直接在注音符號欄位填寫練習 • 🎯 使用寶可夢注音專用字型</p>
+        </div>
+        <div class="page-info">第 5 頁</div>
+    </div>
+    <div class="page-break"></div>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 第 6 頁 • 一排一隻放大版</p>
+    </div>
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pokemon-row">
+                <td class="number-col">#885</td>
+                <td class="image-col">
+                    <img src="pokemon_images/885.png" alt="多龍梅西亞" class="pokemon-img">
+                </td>
+                <td class="name-col">多龍梅西亞</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#886</td>
+                <td class="image-col">
+                    <img src="pokemon_images/886.png" alt="多龍奇" class="pokemon-img">
+                </td>
+                <td class="name-col">多龍奇</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#887</td>
+                <td class="image-col">
+                    <img src="pokemon_images/887.png" alt="多龍巴魯托" class="pokemon-img">
+                </td>
+                <td class="name-col">多龍巴魯托</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#888</td>
+                <td class="image-col">
+                    <img src="pokemon_images/888.png" alt="蒼響" class="pokemon-img">
+                </td>
+                <td class="name-col">蒼響</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#889</td>
+                <td class="image-col">
+                    <img src="pokemon_images/889.png" alt="藏瑪然特" class="pokemon-img">
+                </td>
+                <td class="name-col">藏瑪然特</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#890</td>
+                <td class="image-col">
+                    <img src="pokemon_images/890.png" alt="無極汰那" class="pokemon-img">
+                </td>
+                <td class="name-col">無極汰那</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#891</td>
+                <td class="image-col">
+                    <img src="pokemon_images/891.png" alt="熊徒弟" class="pokemon-img">
+                </td>
+                <td class="name-col">熊徒弟</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#892</td>
+                <td class="image-col">
+                    <img src="pokemon_images/892.png" alt="武道熊師" class="pokemon-img">
+                </td>
+                <td class="name-col">武道熊師</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#893</td>
+                <td class="image-col">
+                    <img src="pokemon_images/893.png" alt="薩戮德" class="pokemon-img">
+                </td>
+                <td class="name-col">薩戮德</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#894</td>
+                <td class="image-col">
+                    <img src="pokemon_images/894.png" alt="雷吉艾勒奇" class="pokemon-img">
+                </td>
+                <td class="name-col">雷吉艾勒奇</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#895</td>
+                <td class="image-col">
+                    <img src="pokemon_images/895.png" alt="雷吉鐸拉戈" class="pokemon-img">
+                </td>
+                <td class="name-col">雷吉鐸拉戈</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#896</td>
+                <td class="image-col">
+                    <img src="pokemon_images/896.png" alt="雪暴馬" class="pokemon-img">
+                </td>
+                <td class="name-col">雪暴馬</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#897</td>
+                <td class="image-col">
+                    <img src="pokemon_images/897.png" alt="靈幽馬" class="pokemon-img">
+                </td>
+                <td class="name-col">靈幽馬</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#898</td>
+                <td class="image-col">
+                    <img src="pokemon_images/898.png" alt="蕾冠王" class="pokemon-img">
+                </td>
+                <td class="name-col">蕾冠王</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#899</td>
+                <td class="image-col">
+                    <img src="pokemon_images/899.png" alt="詭角鹿" class="pokemon-img">
+                </td>
+                <td class="name-col">詭角鹿</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 列印後可直接在注音符號欄位填寫練習 • 🎯 使用寶可夢注音專用字型</p>
+        </div>
+        <div class="page-info">第 6 頁</div>
+    </div>
+    <div class="page-break"></div>
+    <div class="page-header">
+        <h1>🎮 寶可夢注音符號練習表</h1>
+        <p>第8世代 • 第 7 頁 • 一排一隻放大版</p>
+    </div>
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th class="number-col">編號</th>
+                <th class="image-col">寶可夢圖片</th>
+                <th class="name-col">寶可夢名稱</th>
+                <th class="phonetic-col">注音符號練習</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pokemon-row">
+                <td class="number-col">#900</td>
+                <td class="image-col">
+                    <img src="pokemon_images/900.png" alt="劈斧螳螂" class="pokemon-img">
+                </td>
+                <td class="name-col">劈斧螳螂</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#901</td>
+                <td class="image-col">
+                    <img src="pokemon_images/901.png" alt="月月熊" class="pokemon-img">
+                </td>
+                <td class="name-col">月月熊</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#902</td>
+                <td class="image-col">
+                    <img src="pokemon_images/902.png" alt="幽尾玄魚" class="pokemon-img">
+                </td>
+                <td class="name-col">幽尾玄魚</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#903</td>
+                <td class="image-col">
+                    <img src="pokemon_images/903.png" alt="大狃拉" class="pokemon-img">
+                </td>
+                <td class="name-col">大狃拉</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#904</td>
+                <td class="image-col">
+                    <img src="pokemon_images/904.png" alt="萬針魚" class="pokemon-img">
+                </td>
+                <td class="name-col">萬針魚</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+            <tr class="pokemon-row">
+                <td class="number-col">#905</td>
+                <td class="image-col">
+                    <img src="pokemon_images/905.png" alt="眷戀雲" class="pokemon-img">
+                </td>
+                <td class="name-col">眷戀雲</td>
+                <td class="phonetic-col">
+                    <input type="text" class="phonetic-input" placeholder="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="page-footer">
+        <div class="usage-info">
+            <p>📝 使用方法：列印後可直接在注音符號欄位填寫練習 • 適合小朋友學習注音符號</p>
+            <p>🎯 字型：使用寶可夢注音專用字型 • 🖊️ 完全空白，讓小朋友自己練習填寫</p>
+            <p>📏 格式：A4橫式，一排一隻，放大顯示 • 🚀 小檔案，快速載入</p>
+        </div>
+        <div class="page-info">第 7 頁 (共 7 頁)</div>
+    </div>
+</body>
+</html>
