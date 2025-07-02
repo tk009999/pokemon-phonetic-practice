@@ -39,19 +39,21 @@
 ### 🌟 各世代快速連結
 > 點擊下載後即可直接列印，建議使用 A4 橫式列印
 
-| 世代 | 地區 | 寶可夢數量 | 下載連結 |
-|------|------|------------|----------|
-| 🌱 第一世代 | 關東地區 | 151隻 | [📥 下載練習表](pokemon_gen1_phonetic.html) |
-| 🌸 第二世代 | 城都地區 | 100隻 | [📥 下載練習表](pokemon_gen2_phonetic.html) |
-| 🌊 第三世代 | 豐緣地區 | 135隻 | [📥 下載練習表](pokemon_gen3_phonetic.html) |
-| ⛰️ 第四世代 | 神奧地區 | 107隻 | [📥 下載練習表](pokemon_gen4_phonetic.html) |
-| 🌆 第五世代 | 合眾地區 | 156隻 | [📥 下載練習表](pokemon_gen5_phonetic.html) |
-| 🌺 第六世代 | 卡洛斯地區 | 72隻 | [📥 下載練習表](pokemon_gen6_phonetic.html) |
-| 🌴 第七世代 | 阿羅拉地區 | 88隻 | [📥 下載練習表](pokemon_gen7_phonetic.html) |
-| 🏰 第八世代 | 伽勒爾地區 | 96隻 | [📥 下載練習表](pokemon_gen8_phonetic.html) |
-| 🏔️ 第九世代 | 帕底亞地區 | 120隻 | [📥 下載練習表](pokemon_gen9_phonetic.html) |
+| 世代 | 地區 | 寶可夢數量 | 線上預覽 | 下載檔案 |
+|------|------|------------|----------|----------|
+| 🌱 第一世代 | 關東地區 | 151隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen1_phonetic.html) | [📥 下載](pokemon_gen1_phonetic.html) |
+| 🌸 第二世代 | 城都地區 | 100隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen2_phonetic.html) | [📥 下載](pokemon_gen2_phonetic.html) |
+| 🌊 第三世代 | 豐緣地區 | 135隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen3_phonetic.html) | [📥 下載](pokemon_gen3_phonetic.html) |
+| ⛰️ 第四世代 | 神奧地區 | 107隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen4_phonetic.html) | [📥 下載](pokemon_gen4_phonetic.html) |
+| 🌆 第五世代 | 合眾地區 | 156隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen5_phonetic.html) | [📥 下載](pokemon_gen5_phonetic.html) |
+| 🌺 第六世代 | 卡洛斯地區 | 72隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen6_phonetic.html) | [📥 下載](pokemon_gen6_phonetic.html) |
+| 🌴 第七世代 | 阿羅拉地區 | 88隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen7_phonetic.html) | [📥 下載](pokemon_gen7_phonetic.html) |
+| 🏰 第八世代 | 伽勒爾地區 | 96隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen8_phonetic.html) | [📥 下載](pokemon_gen8_phonetic.html) |
+| 🏔️ 第九世代 | 帕底亞地區 | 120隻 | [🌐 線上預覽](https://htmlpreview.github.io/?https://github.com/tk009999/pokemon-phonetic-practice/blob/main/pokemon_gen9_phonetic.html) | [📥 下載](pokemon_gen9_phonetic.html) |
 
 ### 📝 使用小貼士
+- 🌐 **線上預覽**：點擊「🌐 線上預覽」可直接在瀏覽器查看練習表效果
+- 📥 **下載檔案**：點擊「📥 下載」保存 HTML 檔案到電腦，可離線使用
 - 🖨️ **列印設定**：建議使用 A4 橫式列印，效果最佳
 - ✏️ **練習方式**：讓小朋友看著寶可夢圖片和名稱，在空白欄位填寫注音符號
 - 🎯 **專用字型**：內建寶可夢注音專用字型，清晰易讀
@@ -137,8 +139,8 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
 ## 🔄 更新歷史
 
 最後更新：2024年7月1日  
-版本：v1.2.2  
-新增功能：九個世代練習表快速下載連結
+版本：v1.2.3  
+重要更新：修復線上預覽功能，支援直接在瀏覽器查看練習表
 
 ---
 
