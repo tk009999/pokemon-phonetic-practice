@@ -1,5 +1,33 @@
 # 📝 版本歷史
 
+## [1.3.0] - 2026-10-07
+
+### ✨ Added
+- 一頁式練習表網站 `index.html`（GitHub Pages）：搜尋寶可夢、依世代篩選、自選後列印注音或手寫練習表
+- 網站資料產生器 `generate_site_data.py` 與 `pokemon_data/pokemon_names_tw.js`
+- 網站、README 與所有練習表頁尾加上版權與非商業使用聲明
+- 手寫練習表生成器 `generate_handwriting.py`：每個字一列，範字 → 描紅 → 空白格
+- 格線類型：田字格、米字格、空白格
+- 格子尺寸：大格 20mm、中格 15mm、小格 12mm
+- 可調整每個字的描紅格數
+- 描紅樣式：虛線字（筆畫中間一條虛線，可跟著描）、淺色字
+- 內建教育部標準楷書 `fonts/edukai-5.0.ttf` 作為範字字型
+- 筆畫資料收集器 `get_stroke_data.py` 與 `pokemon_data/stroke_medians.json`
+- 運筆描線暖身頁：沿著虛線把寶可夢送回精靈球（橫線、鋸齒、波浪、城牆、彈跳、圈圈）
+- 九個世代的手寫練習表 `pokemon_gen*_handwriting.html`（田字格、大格）
+- `pokemon_manager.py` 主選單新增「7. 生成手寫練習表」
+
+### 📝 Docs
+- README 簡化為入口頁，細節拆到 `docs/DOWNLOADS.md`、`docs/PRINT_GUIDE.md`、`docs/GENERATOR.md`，並新增 `docs/INDEX.md` 文檔索引
+- 各世代練習表的預覽連結改用 GitHub Pages
+- 確認圖鑑資料為最新（1025 隻，第十世代預計 2027 年推出）
+- 手寫練習版路線圖標示已完成項目
+
+### 🚧 尚未實作
+- 筆順、部首、筆畫數、依難度分級（需要漢字資料庫）
+
+---
+
 ## [1.2.5] - 2024-07-01
 
 ### ✨ 新增功能
@@ -322,4 +350,5 @@
 ---
 
 ## 🔄 更新歷史
-- 2024-07-01 by Assistant: 初始版本歷史建立，記錄 v1.0.0 和 v1.1.0 的完整功能 
+- 2024-07-01 by Assistant: 初始版本歷史建立，記錄 v1.0.0 和 v1.1.0 的完整功能
+- 2026-10-07 by Ace: 新增 v1.3.0 手寫練習表 

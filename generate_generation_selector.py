@@ -351,6 +351,7 @@ def generate_html_for_generations(selected_generations, pokemon_data):
             <p>📝 使用方法：列印後可直接在注音符號欄位填寫練習 • 適合小朋友學習注音符號</p>
             <p>🎯 字型：使用寶可夢注音專用字型 • 🖊️ 完全空白，讓小朋友自己練習填寫</p>
             <p>📏 格式：A4橫式，一排一隻，放大顯示 • 🚀 小檔案，快速載入</p>
+            <p>非官方粉絲自製，僅供家庭與教學的非商業使用，請勿販售。寶可夢名稱與圖片 ©Pokémon. ©Nintendo / Creatures Inc. / GAME FREAK inc.</p>
         </div>
         <div class="page-info">第 {page_count} 頁 (共 {page_count} 頁)</div>
     </div>

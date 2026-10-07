@@ -28,6 +28,7 @@ class PokemonManager:
         print("4. 🚀 一鍵完整設置（圖片+名稱+練習表）")
         print("5. 📊 檢查現有資料狀態")
         print("6. 🧹 清理資料")
+        print("7. ✏️ 生成手寫練習表")
         print("0. ❌ 退出程式")
         print()
     
@@ -168,9 +169,9 @@ class PokemonManager:
         print(f"✅ 已儲存對照表到: {csv_path}")
         print(f"✅ 已建立純文字版本: {txt_path}")
     
-    def generate_practice_sheet(self):
-        """生成注音符號練習表"""
-        print("\n🚀 啟動注音符號練習表生成器...")
+    def generate_practice_sheet(self, script="generate_generation_selector.py", label="注音符號練習表"):
+        """生成練習表"""
+        print(f"\n🚀 啟動{label}生成器...")
         
         # 檢查是否有必要的資料
         csv_path = os.path.join(self.data_dir, "pokemon_names_tw.csv")
@@ -182,12 +183,12 @@ class PokemonManager:
         # 執行生成器
         try:
             import subprocess
-            result = subprocess.run(["python", "generate_generation_selector.py"], 
+            result = subprocess.run(["python", script], 
                                   capture_output=False, text=True)
             return True
         except Exception as e:
             print(f"❌ 執行生成器時發生錯誤: {e}")
-            print("💡 請確認 generate_generation_selector.py 檔案存在")
+            print(f"💡 請確認 {script} 檔案存在")
             return False
     
     def check_data_status(self):
@@ -345,7 +346,7 @@ class PokemonManager:
         """主程式執行"""
         while True:
             self.show_main_menu()
-            choice = input("請選擇功能 (0-6): ").strip()
+            choice = input("請選擇功能 (0-7): ").strip()
             
             if choice == "0":
                 print("👋 再見！感謝使用寶可夢注音符號練習表管理工具！")
@@ -370,6 +371,9 @@ class PokemonManager:
             
             elif choice == "6":
                 self.clean_data()
+            
+            elif choice == "7":
+                self.generate_practice_sheet("generate_handwriting.py", "手寫練習表")
             
             else:
                 print("❌ 無效選擇，請重新輸入")

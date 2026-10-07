@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寶可夢練習表圖鑑｜注音・手寫</title>
+    <meta name="description" content="搜尋孩子喜歡的寶可夢，列印專屬的注音符號與漢字手寫練習表。非官方、非商業的親子學習資源。">
+    <style>
+        @font-face {
+            font-family: 'BpmfGenSen';
+            src: url('fonts/BpmfGenYoMin-R.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'MoeKai';
+            src: url('fonts/edukai-5.0.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        :root {
+            --red: #e3350d;
+            --red-dark: #b3260a;
+            --yellow: #ffcb05;
+            --blue: #2a75bb;
+            --blue-dark: #1d4f85;
+            --ink: #26262b;
+            --muted: #6b6b76;
+            --bg: #f3f1ea;
+            --card: #ffffff;
+            --line: #26262b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            background-image: radial-gradient(rgba(38, 38, 43, 0.07) 1.5px, transparent 1.5px);
+            background-size: 22px 22px;
+            color: var(--ink);
+            font-family: "Yuanti TC", "Hiragino Maru Gothic ProN", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* 頁首：圖鑑機身＋精靈球腰帶 */
+        .hero {
+            background: var(--red);
+            background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.16) 0 34%, transparent 34%);
+            color: #fff;
+            padding: 22px 0 46px;
+        }
+
+        .lights {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .lens {
+            width: 54px;
+            height: 54px;
+            border: 5px solid #fff;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 30%, #bfe6ff 0 14%, #46a7e8 15% 55%, var(--blue-dark) 100%);
+            box-shadow: 0 0 0 3px var(--line);
+        }
+
+        .light {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--line);
+            border-radius: 50%;
+            align-self: flex-start;
+        }
+
+        .light.r { background: #ff6b5e; }
+        .light.y { background: var(--yellow); }
+        .light.g { background: #5fd35f; }
+
+        .hero h1 {
+            margin: 0 0 6px;
+            color: var(--yellow);
+            font-size: clamp(30px, 7vw, 52px);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: 0.04em;
+            text-shadow: 3px 3px 0 var(--blue-dark), -1px -1px 0 var(--blue-dark), 1px -1px 0 var(--blue-dark), -1px 1px 0 var(--blue-dark);
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 600px;
+            font-size: 17px;
+        }
+
+        .belt {
+            position: relative;
+            height: 14px;
+            background: var(--line);
+        }
+
+        .belt::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 56px;
+            height: 56px;
+            border: 8px solid var(--line);
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 38%, var(--line) 39% 46%, #fff 47%);
+            transform: translate(-50%, -50%);
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 44px auto 0;
+            padding: 0 16px;
+            list-style: none;
+            font-size: 15px;
+        }
+
+        .steps li {
+            padding: 6px 14px 6px 6px;
+            border: 2px solid var(--line);
+            border-radius: 999px;
+            background: var(--card);
+            box-shadow: 0 3px 0 var(--line);
+        }
+
+        .steps b {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            margin-right: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            text-align: center;
+            line-height: 26px;
+        }
+
+        /* 搜尋列 */
+        .toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            margin-top: 18px;
+            padding: 12px 0;
+            background: var(--bg);
+            border-bottom: 3px solid var(--line);
+        }
+
+        .search {
+            width: 100%;
+            padding: 13px 18px;
+            border: 3px solid var(--line);
+            border-radius: 999px;
+            background: var(--card);
+            box-shadow: 0 4px 0 var(--line);
+            color: var(--ink);
+            font: inherit;
+            font-size: 18px;
+        }
+
+        .search:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 4px 0 var(--blue-dark);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        /* 世代標籤：沒選是白底彩色字，選到的整顆填滿 */
+        .chip {
+            padding: 4px 14px;
+            border: 2px solid var(--chip, #5a5a66);
+            border-radius: 999px;
+            background: var(--card);
+            color: var(--chip, #5a5a66);
+            font: inherit;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .chip[aria-pressed="true"] {
+            border-color: var(--line);
+            background: var(--chip, #5a5a66);
+            box-shadow: 0 3px 0 var(--line);
+            color: #fff;
+        }
+
+        /* 手機上省略地區名，標籤才不會佔掉太多行 */
+        @media (max-width: 600px) {
+            .chip .region {
+                display: none;
+            }
+        }
+
+        .result-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 4px 16px;
+            margin: 16px 0 12px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* 寶可夢卡片 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            position: relative;
+            padding: 12px 8px 12px;
+            border: 3px solid var(--line);
+            border-radius: 18px;
+            background:
+                radial-gradient(circle at 50% 62px, transparent 0 46px, rgba(38, 38, 43, 0.05) 47px 52px, transparent 53px),
+                linear-gradient(#eaf2fa 0 62px, var(--card) 62px);
+            box-shadow: 0 5px 0 var(--line);
+            color: var(--ink);
+            font: inherit;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.12s, box-shadow 0.12s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 var(--line);
+        }
+
+        .card[aria-pressed="true"] {
+            border-color: var(--blue-dark);
+            background: linear-gradient(#ffe886 0 62px, #fff8d6 62px);
+            box-shadow: 0 5px 0 var(--blue-dark);
+        }
+
+        /* 選取記號：小精靈球 */
+        .card[aria-pressed="true"]::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--line);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, #fff 0 18%, var(--line) 19% 30%, transparent 31%),
+                linear-gradient(var(--red) 0 44%, var(--line) 44% 56%, #fff 56%);
+        }
+
+        .card img {
+            display: block;
+            width: 92px;
+            height: 92px;
+            margin: 0 auto 6px;
+            object-fit: contain;
+        }
+
+        .card .number {
+            display: inline-block;
+            padding: 0 9px;
+            border-radius: 999px;
+            background: var(--line);
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .card .name {
+            margin-top: 2px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .empty {
+            padding: 40px 0;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .more {
+            display: block;
+            margin: 22px auto 0;
+            padding: 10px 28px;
+            border: 3px solid var(--line);
+            border-radius: 999px;
+            background: var(--card);
+            box-shadow: 0 4px 0 var(--line);
+            color: var(--ink);
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 整個世代的練習表 */
+        .section-title {
+            margin: 52px 0 6px;
+            font-size: 22px;
+        }
+
+        .section-note {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .gen-table {
+            width: 100%;
+            border: 3px solid var(--line);
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 18px;
+            background: var(--card);
+            box-shadow: 0 5px 0 var(--line);
+            overflow: hidden;
+            font-size: 15px;
+        }
+
+        .gen-table th,
+        .gen-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .gen-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .gen-table th {
+            background: var(--line);
+            color: #fff;
+            font-size: 13px;
+        }
+
+        /* 底部選取列 */
+        .tray {
+            position: sticky;
+            bottom: 0;
+            z-index: 6;
+            margin-top: 28px;
+            padding: 12px 0;
+            border-top: 4px solid var(--line);
+            background: var(--red);
+            color: #fff;
+        }
+
+        .tray[hidden] {
+            display: none;
+        }
+
+        .tray .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 12px;
+        }
+
+        .tray .count {
+            margin-right: auto;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 9px 18px;
+            border: 3px solid var(--line);
+            border-radius: 999px;
+            background: var(--yellow);
+            box-shadow: 0 3px 0 var(--line);
+            color: var(--blue-dark);
+            font: inherit;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn.ghost {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+            color: #fff;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        /* 頁尾聲明 */
+        footer {
+            margin-top: 44px;
+            padding: 26px 0 44px;
+            background: var(--line);
+            color: #c9c9d1;
+            font-size: 13px;
+        }
+
+        footer h2 {
+            margin: 0 0 6px;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        footer p {
+            margin: 0 0 8px;
+        }
+
+        footer a {
+            color: var(--yellow);
+        }
+
+        #print-area {
+            display: none;
+        }
+
+        /* ===== 列印：只印練習表 ===== */
+        @page {
+            size: A4 landscape;
+            margin: 10mm;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: #333;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .site {
+                display: none;
+            }
+
+            #print-area {
+                display: block;
+            }
+        }
+
+        .sheet-header {
+            margin-bottom: 4mm;
+            padding: 2mm;
+            border-bottom: 3px solid #333;
+            text-align: center;
+        }
+
+        .sheet-header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .sheet-footer {
+            margin-top: 4mm;
+            padding-top: 2mm;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .sheet-footer p {
+            margin: 2px 0;
+        }
+
+        /* 注音練習表 */
+        .phonetic-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .phonetic-table th,
+        .phonetic-table td {
+            padding: 8px;
+            border: 2px solid #333;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .phonetic-table th {
+            background: #f0f0f0;
+            font-size: 16px;
+        }
+
+        .phonetic-table tr {
+            height: 75px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .phonetic-table img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .phonetic-table .p-name {
+            font-family: 'BpmfGenSen', "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        /* 手寫練習表 */
+        .pokemon-block {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5mm;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .pokemon-info {
+            width: 42mm;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .pokemon-info .number {
+            color: #666;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pokemon-info img {
+            width: 26mm;
+            height: 26mm;
+            object-fit: contain;
+        }
+
+        .pokemon-info .name {
+            font-family: 'BpmfGenSen', "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .char-row {
+            display: flex;
+        }
+
+        .cell {
+            box-sizing: border-box;
+            flex-shrink: 0;
+            width: 20mm;
+            height: 20mm;
+            margin: 0 -0.3mm -0.3mm 0;
+            border: 0.3mm solid #333;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M50 0V100M0 50H100' stroke='%23aaa' stroke-width='1' stroke-dasharray='4 4' fill='none'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            color: #222;
+            font-family: 'MoeKai', "BiauKai", "Kaiti TC", "DFKai-SB", "標楷體", serif;
+            font-size: 16mm;
+            font-style: normal;
+            line-height: 20mm;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cell.trace {
+            color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+<div class="site">
+    <header class="hero">
+        <div class="wrap">
+            <div class="lights" aria-hidden="true"><span class="lens"></span><span class="light r"></span><span class="light y"></span><span class="light g"></span></div>
+            <h1>寶可夢練習表圖鑑</h1>
+            <p>找到孩子最喜歡的寶可夢，印出只屬於他的注音・手寫練習表。免費、免安裝。</p>
+        </div>
+    </header>
+    <div class="belt" aria-hidden="true"></div>
+    <ol class="wrap steps">
+        <li><b>1</b>搜尋名稱或編號</li>
+        <li><b>2</b>點選想練習的寶可夢</li>
+        <li><b>3</b>列印注音或手寫練習表</li>
+    </ol>
+
+    <div class="toolbar">
+        <div class="wrap">
+            <input class="search" id="search" type="search" placeholder="搜尋寶可夢，例如：皮卡丘、龍、25" aria-label="搜尋寶可夢名稱或圖鑑編號" autocomplete="off">
+            <div class="chips" id="chips" role="group" aria-label="世代篩選"></div>
+        </div>
+    </div>
+
+    <main class="wrap">
+        <div class="result-info">
+            <span id="result-count"></span>
+            <span>點一下卡片加入練習表，再點一下取消</span>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>找不到符合的寶可夢，換個字或編號試試看。</p>
+        <button class="more" id="more" type="button" hidden>顯示更多</button>
+
+        <h2 class="section-title">想一次印整個世代？</h2>
+        <p class="section-note">開啟後按 Ctrl + P（Mac 為 ⌘ + P），紙張選 A4 橫向即可列印或存成 PDF。</p>
+        <table class="gen-table">
+            <thead>
+                <tr><th>世代</th><th>編號</th><th>注音練習表</th><th>手寫練習表</th></tr>
+            </thead>
+            <tbody id="gen-rows"></tbody>
+        </table>
+    </main>
+
+    <div class="tray" id="tray" hidden>
+        <div class="wrap">
+            <span class="count" id="tray-count"></span>
+            <button class="btn ghost" id="clear" type="button">清除</button>
+            <button class="btn" id="print-phonetic" type="button">列印注音練習表</button>
+            <button class="btn" id="print-handwriting" type="button">列印手寫練習表</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <h2>版權與使用聲明</h2>
+            <p>本網站是家長自製的非官方粉絲作品，與任天堂、Creatures、GAME FREAK、The Pokémon Company 沒有任何關係，也未經其贊助或認可。</p>
+            <p>寶可夢的名稱與圖片引用自寶可夢官方網站，著作權與商標權屬於原權利人：©Pokémon. ©Nintendo / Creatures Inc. / GAME FREAK inc.「寶可夢」「Pokémon」為任天堂的商標。</p>
+            <p>本網站與練習表僅供家庭與教學的非商業使用，完全免費、沒有廣告，請勿販售或作任何營利用途。權利人如認為內容不妥，請透過 GitHub Issue 告知，我們會立即處理。</p>
+            <p>範字字型：中華民國教育部標準楷書（CC BY-ND 3.0 TW）。筆畫資料：Hanzi Writer Data／Make Me a Hanzi（Arphic Public License）。網站程式與版面採 CC BY-NC-SA 4.0 授權。</p>
+            <p><a href="https://github.com/tk009999/pokemon-phonetic-practice">GitHub 專案與原始碼</a></p>
+        </div>
+    </footer>
+</div>
+
+<div id="print-area"></div>
+
+<script src="pokemon_data/pokemon_names_tw.js"></script>
+<script>
+    const GENERATIONS = [
+        { name: "第一世代", region: "關東", start: 1, end: 151 },
+        { name: "第二世代", region: "城都", start: 152, end: 251 },
+        { name: "第三世代", region: "豐緣", start: 252, end: 386 },
+        { name: "第四世代", region: "神奧", start: 387, end: 493 },
+        { name: "第五世代", region: "合眾", start: 494, end: 649 },
+        { name: "第六世代", region: "卡洛斯", start: 650, end: 721 },
+        { name: "第七世代", region: "阿羅拉", start: 722, end: 809 },
+        { name: "第八世代", region: "伽勒爾", start: 810, end: 905 },
+        { name: "第九世代", region: "帕底亞", start: 906, end: 1025 },
+    ];
+    // 「全部」加九個世代的標籤顏色
+    const CHIP_COLORS = ["#5a5a66", "#d42f0b", "#9a7b00", "#2f8444", "#2a75bb", "#4d4d57", "#c2417a", "#c46a12", "#7b62a3", "#a83a37"];
+    const PAGE_SIZE = 60;
+    const TRACE_COUNT = 3;
+    const CELLS_PER_ROW = 11;
+    const STORAGE_KEY = "selected-pokemon";
+
+    const pokemon = (window.POKEMON_NAMES || []).map(([number, name]) => ({ number, name }));
+    const byNumber = new Map(pokemon.map(p => [p.number, p]));
+    const selected = new Set();
+    let generation = -1;  // -1 = 全部世代
+    let shown = PAGE_SIZE;
+    let strokeMedians = null;
+
+    const $ = id => document.getElementById(id);
+    const pad = number => String(number).padStart(3, "0");
+    const escapeHtml = text => text.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    function loadSelection() {
+        try {
+            JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")
+                .filter(number => byNumber.has(number))
+                .forEach(number => selected.add(number));
+        } catch (e) {
+            // 無痕模式等情況讀不到就算了，不影響使用
+        }
+    }
+
+    function saveSelection() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify([...selected]));
+        } catch (e) {}
+    }
+
+    function matches() {
+        const keyword = $("search").value.trim().replace(/^#/, "");
+        const gen = GENERATIONS[generation];
+        return pokemon.filter(p => {
+            if (gen && (p.number < gen.start || p.number > gen.end)) return false;
+            if (!keyword) return true;
+            if (/^\d+$/.test(keyword)) return p.number === Number(keyword) || pad(p.number).includes(keyword);
+            return p.name.includes(keyword);
+        });
+    }
+
+    function renderGrid() {
+        const list = matches();
+        $("grid").innerHTML = list.slice(0, shown).map(p => `
+            <button class="card" type="button" data-number="${p.number}" aria-pressed="${selected.has(p.number)}">
+                <img src="pokemon_images/${pad(p.number)}.png" alt="" loading="lazy" width="92" height="92">
+                <div class="number">#${pad(p.number)}</div>
+                <div class="name">${escapeHtml(p.name)}</div>
+            </button>`).join("");
+        $("result-count").textContent = `共 ${list.length} 隻`;
+        $("empty").hidden = list.length > 0;
+        $("more").hidden = list.length <= shown;
+    }
+
+    function renderChips() {
+        const labels = ["全部", ...GENERATIONS.map(gen => `${gen.name}<span class="region">・${gen.region}</span>`)];
+        $("chips").innerHTML = labels.map((label, i) =>
+            `<button class="chip" type="button" style="--chip:${CHIP_COLORS[i]}" data-generation="${i - 1}" aria-pressed="${i - 1 === generation}">${label}</button>`).join("");
+    }
+
+    function renderGenerationRows() {
+        $("gen-rows").innerHTML = GENERATIONS.map((gen, i) => `
+            <tr>
+                <td>${gen.name}・${gen.region}</td>
+                <td>${pad(gen.start)}–${pad(gen.end)}</td>
+                <td><a href="pokemon_gen${i + 1}_phonetic.html">注音</a></td>
+                <td><a href="pokemon_gen${i + 1}_handwriting.html">手寫</a></td>
+            </tr>`).join("");
+    }
+
+    function renderTray() {
+        $("tray").hidden = selected.size === 0;
+        $("tray-count").textContent = `已收服 ${selected.size} 隻`;
+    }
+
+    function selectedPokemon() {
+        return [...selected].sort((a, b) => a - b).map(number => byNumber.get(number));
+    }
+
+    function sheetFooter(extra) {
+        return `
+            <div class="sheet-footer">
+                <p>${extra}</p>
+                <p>非官方粉絲自製，僅供家庭與教學的非商業使用，請勿販售。寶可夢名稱與圖片 ©Pokémon. ©Nintendo / Creatures Inc. / GAME FREAK inc.</p>
+            </div>`;
+    }
+
+    function phoneticSheet(list) {
+        const rows = list.map(p => `
+            <tr>
+                <td>#${pad(p.number)}</td>
+                <td><img src="pokemon_images/${pad(p.number)}.png" alt=""></td>
+                <td class="p-name">${escapeHtml(p.name)}</td>
+                <td></td>
+            </tr>`).join("");
+        return `
+            <div class="sheet-header"><h1>🎮 寶可夢注音符號練習表</h1></div>
+            <table class="phonetic-table">
+                <thead><tr><th style="width:10%">編號</th><th style="width:25%">寶可夢圖片</th><th style="width:30%">寶可夢名稱</th><th style="width:35%">注音符號練習</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+            ${sheetFooter("📝 在注音符號欄位填寫練習")}`;
+    }
+
+    // 筆畫中線資料的座標：1024 見方、y 軸朝上、基線在 124；字佔格子的 80%
+    function traceCell(char) {
+        const medians = strokeMedians && strokeMedians[char];
+        if (!medians) return `<i class="cell trace">${char}</i>`;
+        const paths = medians.map(stroke =>
+            `<path d="M${stroke.map(([x, y]) => `${x} ${900 - y}`).join(" ")}"/>`).join("");
+        return `<svg class="cell" viewBox="-128 -128 1280 1280" fill="none" stroke="#777" stroke-width="22"
+            stroke-dasharray="38 34" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
+    }
+
+    function handwritingSheet(list) {
+        const blocks = list.map(p => {
+            const characters = p.name.match(/[一-鿿]/g) || [];
+            const rows = characters.map(char => `
+                <div class="char-row"><i class="cell">${char}</i>${traceCell(char).repeat(TRACE_COUNT)}${'<i class="cell"></i>'.repeat(CELLS_PER_ROW - 1 - TRACE_COUNT)}</div>`).join("");
+            return `
+                <div class="pokemon-block">
+                    <div class="pokemon-info">
+                        <div class="number">#${pad(p.number)}</div>
+                        <img src="pokemon_images/${pad(p.number)}.png" alt="">
+                        <div class="name">${escapeHtml(p.name)}</div>
+                    </div>
+                    <div>${rows}</div>
+                </div>`;
+        }).join("");
+        return `
+            <div class="sheet-header"><h1>✏️ 寶可夢手寫練習表</h1></div>
+            ${blocks}
+            ${sheetFooter("✏️ 第一格是範字，接著照著描，空白格自己寫 • 範字字型：中華民國教育部標準楷書 • 筆畫資料：Make Me a Hanzi")}`;
+    }
+
+    async function loadStrokeMedians() {
+        if (strokeMedians) return;
+        try {
+            const response = await fetch("pokemon_data/stroke_medians.json");
+            strokeMedians = await response.json();
+        } catch (e) {
+            // 讀不到筆畫資料（例如直接開啟本機檔案）就退回淺色字
+            strokeMedians = {};
+        }
+    }
+
+    async function printSheet(type, button) {
+        const list = selectedPokemon();
+        if (!list.length) return;
+
+        const label = button.textContent;
+        button.disabled = true;
+        button.textContent = "準備中…";
+        try {
+            if (type === "handwriting") await loadStrokeMedians();
+            const area = $("print-area");
+            area.innerHTML = type === "handwriting" ? handwritingSheet(list) : phoneticSheet(list);
+
+            // 字型和圖片都載入完再列印，否則會印出空白或替代字型
+            const text = list.map(p => p.name).join("");
+            const fonts = [document.fonts.load("20px BpmfGenSen", text)];
+            if (type === "handwriting") fonts.push(document.fonts.load("20px MoeKai", text));
+            const images = [...area.querySelectorAll("img")].map(img => img.decode().catch(() => {}));
+            await Promise.all([...fonts, ...images]);
+        } finally {
+            button.disabled = false;
+            button.textContent = label;
+        }
+        window.print();
+    }
+
+    $("search").addEventListener("input", () => { shown = PAGE_SIZE; renderGrid(); });
+    $("more").addEventListener("click", () => { shown += PAGE_SIZE; renderGrid(); });
+    $("chips").addEventListener("click", event => {
+        const chip = event.target.closest(".chip");
+        if (!chip) return;
+        generation = Number(chip.dataset.generation);
+        shown = PAGE_SIZE;
+        renderChips();
+        renderGrid();
+    });
+    $("grid").addEventListener("click", event => {
+        const card = event.target.closest(".card");
+        if (!card) return;
+        const number = Number(card.dataset.number);
+        selected.has(number) ? selected.delete(number) : selected.add(number);
+        card.setAttribute("aria-pressed", selected.has(number));
+        saveSelection();
+        renderTray();
+    });
+    $("clear").addEventListener("click", () => {
+        selected.clear();
+        saveSelection();
+        renderGrid();
+        renderTray();
+    });
+    $("print-phonetic").addEventListener("click", event => printSheet("phonetic", event.currentTarget));
+    $("print-handwriting").addEventListener("click", event => printSheet("handwriting", event.currentTarget));
+
+    loadSelection();
+    renderChips();
+    renderGenerationRows();
+    renderGrid();
+    renderTray();
+</script>
+</body>
+</html>
